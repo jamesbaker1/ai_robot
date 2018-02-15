@@ -8,7 +8,7 @@ Create a self-driving car
 Control self driving car via voice controls
 
 ## Step 3
-Add new features that can be controlled
+Add new features that can be controlled \n
 Possible ideas:
   Make car follow you and become an R2D2 of sorts
   
