@@ -1,13 +1,13 @@
 # ai_robot
 My attempt at creating a (seemingly) sentient being. 
 
-# Step 1
+## Step 1
 Create a self-driving car
 
-# Step 2
+## Step 2
 Control self driving car via voice controls
 
-# Step 3
+## Step 3
 Add new features that can be controlled
 Possible ideas:
   Make car follow you and become an R2D2 of sorts
