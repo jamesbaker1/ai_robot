@@ -8,19 +8,32 @@ class PostHandler(tornado.web.RequestHandler):
     def get(self):
         self.write("This is a post endpoint!")
     def post(self):
-        timestamp = datetime.now()
         data_json = tornado.escape.json_decode(self.request.body)
-        allowed_commands = set(['37','38','39','40'])
-        command = data_json['command']
-        command = list(command.keys())
-        command = set(command)
-        command = allowed_commands & command
-        file_path = str(os.path.dirname(os.path.realpath(__file__)))+"/session.txt"
-        log_entry = str(command)+" "+str(timestamp)
-        log_entries.append((command,timestamp))
-        with open(file_path,"a") as writer:
-            writer.write(log_entry+"\n")
-        print(log_entry)
+        if "command" in data_json:
+            commands = data_json["command"]
+            valid_commands = {'37','38','39','40'}
+            valid_given_commands = [command for command in commands if command in valid_commands]
+            timestamp = datetime.now()
+            log_entry = '{} {}'.format(valid_given_commands, timestamp)
+            # with open(file_path,"a") as writer:
+            #     writer.write(log_entry+"\n")
+            print(log_entry)
+
+
+
+        # timestamp = datetime.now()
+        # data_json = tornado.escape.json_decode(self.request.body)
+        # allowed_commands = set(['37','38','39','40'])
+        # command = data_json['command']
+        # command = list(command.keys())
+        # command = set(command)
+        # command = allowed_commands & command
+        # file_path = str(os.path.dirname(os.path.realpath(__file__)))+"/session.txt"
+        # log_entry = str(command)+" "+str(timestamp)
+        # log_entries.append((command,timestamp))
+        # with open(file_path,"a") as writer:
+        #     writer.write(log_entry+"\n")
+        # print(log_entry)
         # speed = self.settings['speed']
         # if '37' in command:
         #     motor.forward_left(speed)
@@ -37,6 +50,8 @@ class PostHandler(tornado.web.RequestHandler):
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
+        self.write('jonny sucks')
+    def get2(self):
         # self.write("Hello, world")
                 # print("HelloWorld")
         self.write('''
